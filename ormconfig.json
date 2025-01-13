@@ -1,0 +1,15 @@
+{
+  "type": "mongodb",
+  "url": "mongodb://localhost:27017/clean_arch",
+  "synchronize": false,
+  "logging": true,
+  "entities": [
+    "src/domain/entities/*.entity.ts"
+  ],
+  "migrations": [
+    "src/infrastructure/database/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "src/infrastructure/database/migrations"
+  }
+}
