@@ -2,7 +2,7 @@
   "name": "clinics-financial-management-be",
   "version": "1.0.0",
   "description": "Financial management system for clinics",
-  "main": "./src/main.ts",
+  "main": "./dist/main.js",
   "scripts": {
     "dev": "ts-node-dev src/main.ts",
     "build": "tsc",
@@ -67,5 +67,8 @@
   "engines": {
     "node": ">=18",
     "pnpm": ">=8"
+  },
+  "exports": {
+    ".": "./dist/main.js"
   }
 }
