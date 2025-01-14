@@ -3,9 +3,14 @@ import userRoutes from "./user-routes";
 
 const router = Router();
 
+// Root
+router.get("/", (req, res) => {
+	res.send("OK");
+});
+
 // Health check route
 router.get("/health", (req, res) => {
-	res.send("OK");
+	res.send("Clinics Financial API is running.");
 });
 
 // User routes

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev src/main.ts",
     "build": "tsc",
-    "start": "node dist/src/main.js",
+    "start": "node dist/main.js",
+    "clean": "rm -rf dist",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
