@@ -5,7 +5,7 @@ const data_source_1 = require("../database/data-source");
 const user_entity_1 = require("../../domain/entities/user.entity");
 class UserRepositoryAdapter {
     constructor() {
-        this.repository = data_source_1.AppDataSource.getRepository(user_entity_1.User);
+        this.repository = new data_source_1.AppDataSource().getDataSource().getRepository(user_entity_1.User);
     }
     async create(user) {
         const newUser = this.repository.create(user);
