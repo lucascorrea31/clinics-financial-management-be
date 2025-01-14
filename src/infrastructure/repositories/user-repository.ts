@@ -8,7 +8,7 @@ export class UserRepositoryAdapter implements UserRepository {
 	private repository: Repository<User>;
 
 	constructor() {
-		this.repository = AppDataSource.getRepository(User);
+		this.repository = new AppDataSource().getDataSource().getRepository(User);
 	}
 
 	async create(user: Partial<User>): Promise<User> {

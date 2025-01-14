@@ -8,9 +8,11 @@ const routes_1 = __importDefault(require("./interfaces/routes"));
 const logger_1 = __importDefault(require("./infrastructure/logging/logger"));
 const morgan_1 = __importDefault(require("morgan"));
 const data_source_1 = require("./infrastructure/database/data-source");
+require("dotenv/config");
 const PORT = process.env.PORT || 3000;
 (async () => {
     try {
+        logger_1.default.info("Mongo URI:", process.env.MONGO_URI);
         await data_source_1.AppDataSource.initialize();
         logger_1.default.info("Database connected successfully.");
         server_1.default.use((0, morgan_1.default)("combined", {
@@ -20,12 +22,14 @@ const PORT = process.env.PORT || 3000;
         }));
         // Use routes
         server_1.default.use("/api", routes_1.default);
+        logger_1.default.info("API routes were added successfully.");
         // Start server
         server_1.default.listen(PORT, () => {
             logger_1.default.info(`Server running on http://localhost:${PORT}`);
         });
     }
     catch (error) {
+        console.error(error);
         logger_1.default.error("Error during Data Source initialization:", error);
         process.exit(1);
     }

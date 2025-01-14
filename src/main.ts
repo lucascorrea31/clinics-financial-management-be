@@ -3,12 +3,17 @@ import routes from "./interfaces/routes";
 import logger from "./infrastructure/logging/logger";
 import morgan from "morgan";
 import { AppDataSource } from "./infrastructure/database/data-source";
-
-const PORT = process.env.PORT || 3000;
+import * as dotenv from "dotenv";
 
 (async () => {
+	dotenv.config({ path: __dirname + "/../.env" });
+
+	const PORT = process.env.PORT || 3000;
+
 	try {
-		await AppDataSource.initialize();
+		logger.info("Starting server...");
+
+		await new AppDataSource().setup();
 		logger.info("Database connected successfully.");
 
 		app.use(
@@ -21,6 +26,7 @@ const PORT = process.env.PORT || 3000;
 
 		// Use routes
 		app.use("/api", routes);
+		logger.info("API routes were added successfully.");
 
 		// Start server
 		app.listen(PORT, () => {
