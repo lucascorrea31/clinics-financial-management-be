@@ -1,15 +1,15 @@
+import * as dotenv from "dotenv";
+dotenv.config({ path: __dirname + "/../.env" });
+
 import app from "./infrastructure/http/server";
 import routes from "./interfaces/routes";
 import logger from "./infrastructure/logging/logger";
 import morgan from "morgan";
 import { AppDataSource } from "./infrastructure/database/data-source";
-import * as dotenv from "dotenv";
+
+const PORT = process.env.PORT || 3000;
 
 (async () => {
-	dotenv.config({ path: __dirname + "/../.env" });
-
-	const PORT = process.env.PORT || 3000;
-
 	try {
 		logger.info("Starting server...");
 
