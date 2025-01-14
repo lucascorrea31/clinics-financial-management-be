@@ -62,8 +62,9 @@
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.20"
   },
+  "packageManager": "pnpm@8.6.2",
   "engines": {
     "node": ">=18",
-    "pnpm": ">=3"
+    "pnpm": ">=8"
   }
 }
