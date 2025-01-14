@@ -36,15 +36,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const dotenv = __importStar(require("dotenv"));
+dotenv.config({ path: __dirname + "/../.env" });
 const server_1 = __importDefault(require("./infrastructure/http/server"));
 const routes_1 = __importDefault(require("./interfaces/routes"));
 const logger_1 = __importDefault(require("./infrastructure/logging/logger"));
 const morgan_1 = __importDefault(require("morgan"));
 const data_source_1 = require("./infrastructure/database/data-source");
-const dotenv = __importStar(require("dotenv"));
+const PORT = process.env.PORT || 3000;
 (async () => {
-    dotenv.config({ path: __dirname + "/../.env" });
-    const PORT = process.env.PORT || 3000;
     try {
         logger_1.default.info("Starting server...");
         await new data_source_1.AppDataSource().setup();

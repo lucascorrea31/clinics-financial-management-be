@@ -4,14 +4,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const pino_1 = __importDefault(require("pino"));
+const isProduction = process.env.NODE_ENV === "production";
 const logger = (0, pino_1.default)({
     level: process.env.LOG_LEVEL || "info",
-    transport: {
-        target: "pino-pretty",
-        options: {
-            colorize: true,
-            translateTime: true,
-        },
-    },
+    ...(isProduction
+        ? {}
+        : {
+            transport: {
+                target: "pino-pretty",
+                options: {
+                    colorize: true,
+                    translateTime: true,
+                },
+            },
+        }),
 });
 exports.default = logger;
