@@ -8,6 +8,7 @@ on:
       - release-candidate
 jobs:
   Deploy-Preview:
+    needs: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

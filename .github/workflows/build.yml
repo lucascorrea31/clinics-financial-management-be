@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - develop
+      - release-candidate
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -13,9 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: Install dependencies
         run: pnpm install
+      - name: Lint
+        run: pnpm lint:fix && pnpm lint:format
       - name: Test and coverage
         run: pnpm test:coverage
       - name: SonarQube Scan
