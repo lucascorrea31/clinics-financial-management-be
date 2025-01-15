@@ -5,12 +5,12 @@ const router = Router();
 
 // Root
 router.get("/", (req, res) => {
-	res.send("OK");
+  res.send("OK");
 });
 
 // Health check route
 router.get("/health", (req, res) => {
-	res.send("Clinics Financial API is running.");
+  res.send("Clinics Financial API is running.");
 });
 
 // User routes
