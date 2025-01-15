@@ -11,7 +11,7 @@ on:
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
-    if: github.repository.default_branch == 'main' && github.event.workflow_run.conclusion == 'success'
+    if: github.repository.default_branch == 'main'
     steps:
       - uses: actions/checkout@v2
       - name: Install Vercel CLI
