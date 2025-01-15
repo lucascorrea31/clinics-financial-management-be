@@ -1,15 +1,14 @@
 import { Request, Response } from "express";
 import { CreateUser } from "../../application/use-cases/create-user";
-import { UserRepositoryAdapter } from "../../infrastructure/repositories/user-repository";
-import logger from "../../infrastructure/logging/logger";
+import { UserRepositoryAdapter } from "../repositories/user-repository";
+import logger from "../logging/logger";
 
 export class UserController {
-	private createUser: CreateUser;
-
-	constructor() {
-		const userRepository = new UserRepositoryAdapter();
-		this.createUser = new CreateUser(userRepository);
-	}
+	constructor(
+		private readonly createUser: CreateUser = new CreateUser(
+			new UserRepositoryAdapter()
+		)
+	) {}
 
 	async create(req: Request, res: Response): Promise<Response> {
 		try {

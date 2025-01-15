@@ -5,7 +5,7 @@ import { User } from "../../domain/entities/user.entity";
 import { ObjectId } from "mongodb";
 
 export class UserRepositoryAdapter implements UserRepository {
-	private repository: Repository<User>;
+	private readonly repository: Repository<User>;
 
 	constructor() {
 		this.repository = new AppDataSource().getDataSource().getRepository(User);
