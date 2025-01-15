@@ -1,4 +1,5 @@
 name: SonarQube Build
+
 on:
   push:
     branches:
@@ -7,6 +8,7 @@ on:
       - release-candidate
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
   sonarqube:
     name: SonarQube
